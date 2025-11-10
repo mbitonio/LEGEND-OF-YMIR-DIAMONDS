@@ -12,12 +12,11 @@
     --red1:#1a0f14; --red2:#120a10; --ink:#09060a;
     --border: rgba(255,100,140,.18);
     --glow-soft: 0 0 16px rgba(255,40,100,.22);
-    --glass: rgba(255,255,255,0.04);
   }
   *{box-sizing:border-box}
   html,body{margin:0;color:var(--txt);font-family:Poppins,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--ink);min-height:100%}
 
-  /* Background floating */
+  /* Background */
   body::before{
     content:"";position:fixed;inset:-20% -20%;z-index:-3;pointer-events:none;
     background:
@@ -37,11 +36,10 @@
   @keyframes spark{0%{transform:translateY(0)}100%{transform:translateY(-8px)}}
 
   .wrap{max-width:760px;margin:auto;padding:18px 16px 120px}
-  /* TITLE: gray + animated red glowing */
+  /* Title: gray with subtle animated pink glow */
   .title{
     display:flex;gap:10px;justify-content:center;font-weight:800;font-size:22px;letter-spacing:.4px;margin:2px 0 8px;
     color:#bdbdbd;
-    text-shadow:0 0 0 rgba(255,40,100,0);
     animation: titleGlow 2.2s ease-in-out infinite alternate;
   }
   @keyframes titleGlow{
@@ -49,9 +47,9 @@
     100%{ text-shadow:0 0 8px rgba(255,40,100,.18), 0 0 20px rgba(255,40,100,.12); transform:translateY(-1px); }
   }
 
-  /* Logo: glowing ring only, animated pulse + rotate */
+  /* Logo: glowing ring only, animated */
   .logoWrap{display:grid;place-items:center;margin:8px 0}
-  .logo{width:min(44vw,186px);aspect-ratio:1/1;border-radius:999px;position:relative;display:grid;place-items:center;background:transparent;box-shadow:none; cursor:pointer;overflow:visible}
+  .logo{width:min(44vw,186px);aspect-ratio:1/1;border-radius:999px;position:relative;display:grid;place-items:center;background:transparent;cursor:pointer;overflow:visible}
   .ring{
     position:absolute;inset:6px;border-radius:999px;background:conic-gradient(from 0deg, rgba(255,40,120,0.12), rgba(255,80,140,0.06), rgba(255,40,120,0.12));
     filter: blur(12px); z-index:1; pointer-events:none;
@@ -74,7 +72,7 @@
   /* Tiers */
   .row{display:grid;gap:12px}
   .prices{display:grid;grid-template-columns:repeat(3,1fr);margin:6px 0 10px}
-  .pill{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.00));border:1px solid rgba(255,100,140,.10);border-radius:18px;padding:12px;text-align:center;box-shadow:inset 0 0 0 1px rgba(255,30,80,.03), var(--glow-soft);transition:transform .18s, box-shadow .18s, border-color .18s, opacity .18s}
+  .pill{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.00));border:1px solid rgba(255,100,140,.08);border-radius:18px;padding:12px;text-align:center;box-shadow:inset 0 0 0 1px rgba(255,30,80,.03), var(--glow-soft);transition:transform .18s, box-shadow .18s, border-color .18s, opacity .18s}
   .pval{font-size:26px;font-weight:900}
   .ptxt{font-size:12px;color:#ccb9c1}
   .pill.active{transform:translateY(-2px) scale(1.02);border-color:rgba(80,255,170,.12);box-shadow:0 0 12px rgba(40,255,170,.06)}
@@ -96,28 +94,12 @@
   .saveBox{background:linear-gradient(180deg,#07120b,#071012);border-color:rgba(40,255,160,.06)}
 
   /* Buttons */
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:14px;padding:14px 16px;font-weight:800;letter-spacing:.2px;cursor:pointer;user-select:none}
-  .buy{background:linear-gradient(180deg,#18c76f,#0ea85a);color:#052113;font-size:16px;box-shadow:0 12px 28px rgba(24,200,110,.14);width:100%;margin-top:10px;transition:transform .12s}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:14px;padding:12px 14px;font-weight:800;letter-spacing:.2px;cursor:pointer;user-select:none}
+  .buy{background:linear-gradient(180deg,#22d07a,#18b35f);color:#072012;font-size:16px;box-shadow:0 12px 28px rgba(24,200,110,.14);width:100%;margin-top:10px;transition:transform .12s}
   .buy:active{transform:translateY(1px)}
   .btn[disabled]{opacity:.55;filter:grayscale(.25);cursor:not-allowed}
 
-  /* Payment + socials */
-  .pay{background:linear-gradient(180deg,#0f1116,#0a0b0f);border:1px solid rgba(24,119,242,.08);border-radius:18px;padding:12px 14px;box-shadow:0 0 12px rgba(24,119,242,.04);margin-top:10px}
-  .gcashRow{display:flex;align-items:center;gap:12px;justify-content:space-between;background:rgba(24,119,242,.06);border:1px solid rgba(24,119,242,.12);padding:10px 12px;border-radius:12px;max-width:560px;margin:8px auto 10px; box-shadow:0 8px 18px rgba(0,0,0,.18); font-weight:800; cursor:pointer}
-  .gcashLeft{display:flex;align-items:center;gap:10px}
-  .gcashIcon{width:26px;height:26px;border-radius:999px;background:#1877f2;display:grid;place-items:center;box-shadow:0 0 8px rgba(24,119,242,.18);font-weight:900;color:#fff}
-  .qrBtn{display:inline-flex;align-items:center;gap:8px;background:rgba(24,119,242,.10);color:#eaf3ff;border:1px solid rgba(24,119,242,.12);padding:8px 12px;border-radius:10px;font-weight:800}
-  .soc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-  .btnlink{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:14px;padding:14px 16px;font-weight:800;letter-spacing:.2px;text-decoration:none}
-  .fb{background:var(--blue);color:#fff}
-  .dc{background:var(--discord);color:#fff}
-
-  /* Notice */
-  .notice{margin-top:12px;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,#17141a,#100f12);border:1px solid rgba(255,255,255,.04);box-shadow:0 6px 16px rgba(0,0,0,.18)}
-  .notice h4{margin:0 0 6px;font-size:14px}
-  .notice p{margin:0;color:#ccb9c1;font-size:13px}
-
-  /* Suggestions */
+  /* Suggestions list */
   .suggestions{position:relative}
   .suggestions-list{position:absolute;left:0;right:0;top:100%;background:#0b0a0d;border:1px solid rgba(255,255,255,.04);border-radius:10px;margin-top:8px;box-shadow:0 12px 36px rgba(0,0,0,.45);max-height:220px;overflow:auto;z-index:40}
   .suggest-item{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.02);cursor:pointer}
@@ -136,7 +118,7 @@
   .popup-body{color:#dcd3d8;font-size:14px}
   .popup-actions{margin-top:12px;display:flex;gap:10px;justify-content:center}
 
-  /* subtle confetti pulse for thank you */
+  /* confetti pulse */
   .confetti{
     width:72px;height:72px;border-radius:999px;background:radial-gradient(circle at 40% 30%, rgba(255,255,255,.95), rgba(255,255,255,.6) 20%, transparent 40%);
     box-shadow:0 8px 28px rgba(255,120,160,.08);margin:10px auto;transform:scale(.9);opacity:0;transition:opacity .28s, transform .28s;
@@ -151,7 +133,7 @@
     <div class="title">LEGEND OF YMIR DIAMOND 💎</div>
 
     <div class="logoWrap">
-      <div class="logo" id="secretLogo" title="Tap 6x to mark delivered (hidden)">
+      <div class="logo" id="secretLogo" title="Secret: 6 taps marks delivered">
         <div class="ring" aria-hidden="true"></div>
         <img src="logo.png" alt="Logo">
       </div>
@@ -184,7 +166,7 @@
         <div id="suggestList" class="suggestions-list" style="display:none"></div>
       </div>
 
-      <div class="hint">Piliin ang server mula sa suggestions para maiwasan ang delay. (Auto-match exact names)</div>
+      <div class="hint">Piliin ang server mula sa list para maiwasan ang delay. (Auto-match exact names)</div>
       <div id="warn" class="warn">Minimum 1000 💎 required and Server is needed.</div>
 
       <div class="grid2">
@@ -193,7 +175,7 @@
       </div>
     </div>
 
-    <!-- Buy -->
+    <!-- BUY -->
     <button id="buyBtn" type="button" class="btn buy" disabled>✅ COPY AND SEND TO SELLER</button>
     <div class="label" style="text-align:center;margin-top:8px">Enter at least 1000 dias, then choose your server from the suggestions.</div>
 
@@ -220,9 +202,33 @@
       <p>Processing time may vary depending on server demand. Some servers might experience longer wait times — pero <strong>guaranteed matatanggap ang order mo</strong>.</p>
     </div>
 
+    <!-- (Optional) Track Order kept — local-only -->
+    <div class="track" style="margin-top:14px">
+      <div class="label" style="margin-bottom:6px">Track Order</div>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:10px">
+        <input id="trackIn" class="in" placeholder="Enter Receipt ID (e.g., YMIR-XXXX)" autocomplete="off">
+        <button id="trackBtn" class="btn" style="background:#27252c;color:#fff">Check</button>
+      </div>
+      <div id="trackOut" style="margin-top:10px;display:none">
+        <div class="chip" style="margin-bottom:8px"><strong id="t_id">—</strong> <span id="t_status" style="opacity:.9"></span></div>
+        <div style="display:grid;gap:6px;font-size:14px;color:#ccb9c1">
+          <div>Server: <span id="t_server" style="color:#fff"></span></div>
+          <div>Diamonds: <span id="t_qty" style="color:#fff"></span> 💎</div>
+          <div>Rate: <span id="t_rate" style="color:#fff"></span></div>
+          <div>Total: <span id="t_total" style="color:#fff"></span></div>
+          <div>Created: <span id="t_time" style="color:#fff"></span></div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <button id="btnPaid" class="btn" style="background:#204c2f;color:#e7fff1">Buyer: I Paid</button>
+        </div>
+        <div class="hint" style="margin-top:6px">Tip: Buyer taps <b>I Paid</b> after sending payment. (Local tracking only)</div>
+      </div>
+      <div id="trackNone" class="hint" style="display:none;margin-top:8px">Walang record sa device na ’to. Note: Tracking works on the same phone/browser (local only).</div>
+    </div>
+
   </div>
 
-  <!-- BUY Popup (improved) -->
+  <!-- BUY Overlay -->
   <div id="buyOverlay" class="overlay" aria-hidden="true">
     <div class="glass" role="dialog" aria-modal="true" aria-labelledby="buyTitle">
       <h3 id="buyTitle" class="popup-title">Copied ✔</h3>
@@ -231,7 +237,7 @@
         <div id="buyReceipt" style="margin-top:6px;font-weight:800"></div>
         <div id="thankConf" style="margin-top:10px;text-align:center">
           <div id="confetti" class="confetti" aria-hidden="true"></div>
-          <div id="thankText" style="font-weight:700;margin-top:6px;color:#fbe9ef;display:none">🎉 Thank you for buying diamonds! </div>
+          <div id="thankText" style="font-weight:700;margin-top:6px;color:#fbe9ef;display:none">🎉 Thank you for buying diamonds!</div>
         </div>
       </div>
       <div class="popup-actions">
@@ -240,7 +246,7 @@
     </div>
   </div>
 
-  <!-- GCash popup -->
+  <!-- GCash overlay -->
   <div id="gcashOverlay" class="overlay" aria-hidden="true">
     <div class="glass" role="dialog" aria-modal="true">
       <h3 class="popup-title">GCash Copied ✔</h3>
@@ -249,7 +255,7 @@
     </div>
   </div>
 
-  <!-- GCash QR -->
+  <!-- QR overlays -->
   <div id="qrOverlay" class="overlay" aria-hidden="true">
     <div class="glass" role="dialog" aria-modal="true">
       <h3 class="popup-title">GCash QR</h3>
@@ -258,7 +264,6 @@
     </div>
   </div>
 
-  <!-- GoTyme copied -->
   <div id="goOverlay" class="overlay" aria-hidden="true">
     <div class="glass" role="dialog" aria-modal="true">
       <h3 class="popup-title">GoTyme Copied ✔</h3>
@@ -267,7 +272,6 @@
     </div>
   </div>
 
-  <!-- GoTyme QR -->
   <div id="goQROverlay" class="overlay" aria-hidden="true">
     <div class="glass" role="dialog" aria-modal="true">
       <h3 class="popup-title">GoTyme QR</h3>
@@ -278,167 +282,144 @@
 
 <script>
 (function(){
-  // small helper
   const $ = id => document.getElementById(id);
+  const clean = v => String(v ?? '').replace(/[^\d.]/g,'');
+  const toInt = v => { const m = clean(v).match(/^\d+/); return m? parseInt(m[0],10):0; };
+  const toNum = v => { const m = clean(v).match(/^\d+(?:\.\d+)?/); return m? parseFloat(m[0]):0; };
+  const fmt = n => Number(n).toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2});
 
-  // basic error toast
-  window.addEventListener('error', function (e) {
-    try{
-      const t = document.createElement('div');
-      t.textContent = 'Error: ' + (e.message || 'unknown');
-      Object.assign(t.style, {
-        position:'fixed', left:'8px', bottom:'8px', background:'rgba(255,0,80,.12)',
-        color:'#fff', padding:'8px 10px', border:'1px solid rgba(255,0,80,.35)',
-        borderRadius:'8px', zIndex:99999, fontSize:'12px', maxWidth:'90vw'
-      });
-      document.body.appendChild(t);
-      setTimeout(()=>t.remove(), 5000);
-    }catch(_){} 
-  });
+  const MIN1=1000, MIN2=4000, MIN3=8000;
+  const T1=0.80, T2=0.75, T3=0.70;
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const clean = v => String(v ?? '').replace(/[^\d.]/g,'');
-    const toInt = v => { const m = clean(v).match(/^\d+/); return m? parseInt(m[0],10):0; };
-    const toNum = v => { const m = clean(v).match(/^\d+(?:\.\d+)?/); return m? parseFloat(m[0]):0; };
-    const fmt = n => Number(n).toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2});
-
-    /* tiers */
-    const MIN1=1000, MIN2=4000, MIN3=8000;
-    const T1=0.80, T2=0.75, T3=0.70;
-
-    /* servers (user provided) */
-    const servers = [
+  // server list from user
+  const servers = [
 "破军","8888","DaddyKim","DaddyVerse","DaddyWorld","HOF1","HOF2","HOF3","HOF4","HOF5","HOF6","HERO","KINGS","Kings2","Kings3","Kings4","xaou","Chess","ISEKAI","ManiTW","PROSGARD","X","MEGA","Sky","Tokyo","Bangkok","Taipei","Asia014","Asia015","Asia016","Asia017","Asia018","Asia019","Asia020","Asia021","Asia022","Asia023","Asia024","Asia025","Asia026","Asia027","Asia028","Asia029","Asia030","Asia031","Asia032","Asia033","Asia034","Asia035","Asia036","Asia037","Asia038","Asia039","Asia040","Asia041","Asia042","Asia043"
-    ];
+  ];
 
-    /* storage */
-    const STORE_KEY='ymir_orders';
-    const loadOrders = () => { try{ return JSON.parse(localStorage.getItem(STORE_KEY)||'{}'); }catch{return{}} };
-    const saveOrders = m => { try{ localStorage.setItem(STORE_KEY, JSON.stringify(m)); }catch{} };
+  const STORE_KEY='ymir_orders';
+  const loadOrders = () => { try{ return JSON.parse(localStorage.getItem(STORE_KEY)||'{}'); }catch{return{}} };
+  const saveOrders = m => { try{ localStorage.setItem(STORE_KEY, JSON.stringify(m)); }catch{} };
 
-    function getRate(q){
-      if(!q || q<MIN1) return null;
-      if(q<MIN2) return T1;
-      if(q<MIN3) return T2;
-      return T3;
+  function getRate(q){
+    if(!q || q<MIN1) return null;
+    if(q<MIN2) return T1;
+    if(q<MIN3) return T2;
+    return T3;
+  }
+  function estimateFromPHP(p){
+    if(!p||p<=0) return 0;
+    let q = Math.floor(p/T1);
+    for(let i=0;i<4;i++){
+      const r = getRate(q) ?? T1;
+      q = Math.floor(p/r);
     }
-    function estimateFromPHP(p){
-      if(!p||p<=0) return 0;
-      let q = Math.floor(p/T1);
-      for(let i=0;i<4;i++){
-        const r = getRate(q) ?? T1;
-        q = Math.floor(p/r);
-      }
-      return q;
-    }
+    return q;
+  }
 
-    function paintPills(q, r){
-      const p80=$('pill80'), p75=$('pill75'), p70=$('pill70');
-      [p80,p75,p70].forEach(p=>p.classList.remove('active','lock','flame','best'));
-      if(!q || q<MIN1){ p80.classList.add('lock'); p75.classList.add('lock'); p70.classList.add('lock'); return; }
-      if(q<MIN2) p75.classList.add('lock');
-      if(q<MIN3) p70.classList.add('lock');
-      if(r===T1) p80.classList.add('active');
-      if(r===T2) p75.classList.add('active');
-      if(r===T3){ p70.classList.add('active','flame','best'); }
-    }
+  function paintPills(q, r){
+    const p80=$('pill80'), p75=$('pill75'), p70=$('pill70');
+    [p80,p75,p70].forEach(p=>p.classList.remove('active','lock','flame','best'));
+    if(!q || q<MIN1){ p80.classList.add('lock'); p75.classList.add('lock'); p70.classList.add('lock'); return; }
+    if(q<MIN2) p75.classList.add('lock');
+    if(q<MIN3) p70.classList.add('lock');
+    if(r===T1) p80.classList.add('active');
+    if(r===T2) p75.classList.add('active');
+    if(r===T3){ p70.classList.add('active','flame','best'); }
+  }
 
-    // elements
-    const diasEl=$('dias'), phpEl=$('phpIn'), serverEl=$('serverIn');
-    const rateOut=$('rateOut'), saveOut=$('saveOut'), warn=$('warn'), buyBtn=$('buyBtn');
-    const suggestList = $('suggestList');
-    let lastEdited=null;
-    const validServer = () => servers.includes(serverEl.value.trim());
+  const diasEl=$('dias'), phpEl=$('phpIn'), serverEl=$('serverIn');
+  const rateOut=$('rateOut'), saveOut=$('saveOut'), warn=$('warn'), buyBtn=$('buyBtn');
+  const suggestList = $('suggestList');
+  let lastEdited=null;
 
-    function recalc(){
-      let q = toInt(diasEl.value);
-      let p = toNum(phpEl.value);
+  const validServer = () => servers.includes(serverEl.value.trim());
 
-      if(lastEdited==='p'){ q = estimateFromPHP(p); diasEl.value = q?String(q):''; }
-      else if(lastEdited==='d'){ const r=getRate(q); phpEl.value = (r&&q)? fmt(q*r):''; }
-      else{
-        if(!q && p){ q = estimateFromPHP(p); diasEl.value = q?String(q):''; }
-        if(q && !p){ const r=getRate(q); phpEl.value = r? fmt(q*r):''; }
-      }
+  function recalc(){
+    let q = toInt(diasEl.value);
+    let p = toNum(phpEl.value);
 
-      const r=getRate(q);
-      paintPills(q,r);
-
-      const ok = q>=MIN1 && !!r && validServer();
-      warn.style.display = ok ? 'none' : 'block';
-      buyBtn.disabled = !ok;
-
-      if(r && q){
-        rateOut.textContent = `₱${r.toFixed(2)} / dia`;
-        const base=q*T1, saveAmt=Math.max(0, base-(q*r));
-        const savePct=Math.max(0,(1-r/T1)*100);
-        saveOut.textContent = `${savePct.toFixed(2)}% • ₱${fmt(saveAmt)}`;
-      }else{
-        rateOut.textContent='—';
-        saveOut.textContent='—';
-      }
+    if(lastEdited==='p'){ q = estimateFromPHP(p); diasEl.value = q?String(q):''; }
+    else if(lastEdited==='d'){ const r=getRate(q); phpEl.value = (r&&q)? fmt(q*r):''; }
+    else{
+      if(!q && p){ q = estimateFromPHP(p); diasEl.value = q?String(q):''; }
+      if(q && !p){ const r=getRate(q); phpEl.value = r? fmt(q*r):''; }
     }
 
-    ['input','change','keyup'].forEach(ev=>{
-      diasEl.addEventListener(ev, ()=>{ lastEdited='d'; recalc(); });
-      phpEl.addEventListener(ev,  ()=>{ lastEdited='p'; recalc(); });
-      serverEl.addEventListener('input', ()=>{ filterServers(serverEl.value); recalc(); });
-    });
-    recalc();
+    const r=getRate(q);
+    paintPills(q,r);
 
-    /* Server suggestion helpers */
-    function filterServers(q){
-      const v = String(q||'').trim();
-      if(!v){ suggestList.style.display='none'; suggestList.innerHTML=''; return; }
-      const qlow = v.toLowerCase();
-      const starts = servers.filter(s=>s.toLowerCase().startsWith(qlow));
-      const includes = servers.filter(s=>!s.toLowerCase().startsWith(qlow) && s.toLowerCase().includes(qlow));
-      const matches = starts.concat(includes).slice(0,80);
-      if(matches.length===0){ suggestList.style.display='none'; suggestList.innerHTML=''; return; }
-      suggestList.innerHTML = matches.map(s=>`<div class="suggest-item" data-val="${escapeHtml(s)}">${escapeHtml(s)}</div>`).join('');
-      suggestList.style.display='block';
-      Array.from(suggestList.children).forEach(ch=>{
-        ch.addEventListener('click', ()=>{
-          serverEl.value = ch.getAttribute('data-val');
-          suggestList.style.display='none';
-          recalc();
-        });
+    const ok = q>=MIN1 && !!r && validServer();
+    warn.style.display = ok ? 'none' : 'block';
+    buyBtn.disabled = !ok;
+
+    if(r && q){
+      rateOut.textContent = `₱${r.toFixed(2)} / dia`;
+      const base=q*T1, saveAmt=Math.max(0, base-(q*r));
+      const savePct=Math.max(0,(1-r/T1)*100);
+      saveOut.textContent = `${savePct.toFixed(2)}% • ₱${fmt(saveAmt)}`;
+    }else{
+      rateOut.textContent='—';
+      saveOut.textContent='—';
+    }
+  }
+
+  ['input','change','keyup'].forEach(ev=>{
+    diasEl.addEventListener(ev, ()=>{ lastEdited='d'; recalc(); });
+    phpEl.addEventListener(ev,  ()=>{ lastEdited='p'; recalc(); });
+    serverEl.addEventListener('input', ()=>{ filterServers(serverEl.value); recalc(); });
+  });
+  recalc();
+
+  /* Server suggestion helpers */
+  function filterServers(q){
+    const v = String(q||'').trim();
+    if(!v){ suggestList.style.display='none'; suggestList.innerHTML=''; return; }
+    const qlow = v.toLowerCase();
+    const starts = servers.filter(s=>s.toLowerCase().startsWith(qlow));
+    const includes = servers.filter(s=>!s.toLowerCase().startsWith(qlow) && s.toLowerCase().includes(qlow));
+    const matches = starts.concat(includes).slice(0,80);
+    if(matches.length===0){ suggestList.style.display='none'; suggestList.innerHTML=''; return; }
+    suggestList.innerHTML = matches.map(s=>`<div class="suggest-item" data-val="${escapeHtml(s)}">${escapeHtml(s)}</div>`).join('');
+    suggestList.style.display='block';
+    Array.from(suggestList.children).forEach(ch=>{
+      ch.addEventListener('click', ()=>{
+        serverEl.value = ch.getAttribute('data-val');
+        suggestList.style.display='none';
+        recalc();
       });
-    }
-    function escapeHtml(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-    document.addEventListener('click', (e)=>{ if(!e.target.closest('.suggestions')){ suggestList.style.display='none'; } });
+    });
+  }
+  function escapeHtml(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  document.addEventListener('click', (e)=>{ if(!e.target.closest('.suggestions')){ suggestList.style.display='none'; } });
 
-    /* Generate receipt ID */
-    function genRID(){
-      const t = Date.now().toString(36).toUpperCase();
-      const r = Math.random().toString(36).slice(2,6).toUpperCase();
-      return `YMIR-${t}-${r}`;
-    }
+  /* Receipt helpers */
+  function genRID(){
+    const t = Date.now().toString(36).toUpperCase();
+    const r = Math.random().toString(36).slice(2,6).toUpperCase();
+    return `YMIR-${t}-${r}`;
+  }
 
-    /* Overlay helpers */
-    function showOverlay(el){
-      el.classList.add('show'); el.style.display='grid';
-      // set aria
-      el.setAttribute('aria-hidden','false');
-    }
-    function hideOverlay(el){
-      el.classList.remove('show');
-      el.setAttribute('aria-hidden','true');
-      // allow animation to finish
-      setTimeout(()=>{ el.style.display='none'; }, 260);
-    }
+  function setStatusUI(status){
+    const s=$('t_status');
+    s.textContent = status;
+    s.style.color = status==='DELIVERED' ? '#ff8aa0' : status==='PAID' ? '#22cf74' : '#ffd64d';
+  }
 
-    /* BUY: copy + show improved popup with thank you */
-    $('buyBtn').addEventListener('click', async ()=>{
-      let q = toInt(diasEl.value);
-      let p = toNum(phpEl.value);
-      if(!q && p) q = estimateFromPHP(p);
-      const r = getRate(q);
-      if(!r || !validServer()){ recalc(); return; }
-      const total = p || (q*r);
-      const rid = genRID();
+  /* Overlays */
+  function showOverlay(el){ el.classList.add('show'); el.style.display='grid'; el.setAttribute('aria-hidden','false'); }
+  function hideOverlay(el){ el.classList.remove('show'); el.setAttribute('aria-hidden','true'); setTimeout(()=>el.style.display='none',260); }
 
-      const msg = `BUY ORDER
+  /* BUY button */
+  $('buyBtn').addEventListener('click', async ()=>{
+    let q = toInt(diasEl.value);
+    let p = toNum(phpEl.value);
+    if(!q && p) q = estimateFromPHP(p);
+    const r = getRate(q);
+    if(!r || !validServer()){ recalc(); return; }
+    const total = p || (q*r);
+    const rid = genRID();
+
+    const msg = `BUY ORDER
 Diamonds: ${q} 💎
 Server: ${serverEl.value.trim()}
 Rate: ₱${r.toFixed(2)} / dia
@@ -446,75 +427,98 @@ Total: ₱${fmt(total)}
 GCash: 09162466318 (MOISES B.)
 Receipt ID: ${rid}`;
 
-      try{ await navigator.clipboard.writeText(msg); }catch(e){ /* ignore */ }
+    try{ await navigator.clipboard.writeText(msg); }catch(e){ /* ignore */ }
 
-      // save locally
+    // save locally
+    const map = loadOrders();
+    map[rid] = {status:'PENDING', server: serverEl.value.trim(), qty:q, rate:r, total, time:new Date().toISOString()};
+    saveOrders(map);
+
+    // show overlay + thank you pulse
+    $('buyReceipt').textContent = `Receipt ID: ${rid}`;
+    $('buyMsg').innerHTML = `<strong>I-PASTE MO ITO SA MESSENGER KO.</strong><br><small style="opacity:.95">${msg.replace(/\n/g,'<br>')}</small>`;
+    const overlay = $('buyOverlay'); showOverlay(overlay);
+
+    const conf = $('confetti'), thanks = $('thankText');
+    conf.classList.add('show'); thanks.style.display='block';
+    setTimeout(()=>{ conf.classList.remove('show'); }, 2200);
+    setTimeout(()=>{ hideOverlay(overlay); thanks.style.display='none'; }, 5200);
+
+    // prefill track
+    $('trackIn').value = rid;
+    showTrack(rid, map[rid]);
+  });
+
+  $('closeBuy').addEventListener('click', ()=>{ hideOverlay($('buyOverlay')); $('thankText').style.display='none'; });
+
+  /* Track UI */
+  function showTrack(id, rec){
+    if(rec){
+      $('trackOut').style.display='block';
+      $('trackNone').style.display='none';
+      $('t_id').textContent = id;
+      setStatusUI(rec.status);
+      $('t_server').textContent = rec.server || '—';
+      $('t_qty').textContent = rec.qty || '—';
+      $('t_rate').textContent = rec.rate ? `₱${rec.rate.toFixed(2)} / dia` : '—';
+      $('t_total').textContent = rec.total ? `₱${fmt(rec.total)}` : '—';
+      $('t_time').textContent = rec.time ? new Date(rec.time).toLocaleString() : '—';
+    }else{
+      $('trackOut').style.display='none';
+      $('trackNone').style.display='block';
+    }
+  }
+  (function(){
+    const params = new URLSearchParams(location.search);
+    const rid = params.get('rid');
+    if(rid){
+      $('trackIn').value = rid;
+      const rec = loadOrders()[rid];
+      showTrack(rid, rec);
+    }
+  })();
+  $('trackBtn').addEventListener('click', ()=>{ const id = $('trackIn').value.trim(); const rec = loadOrders()[id]; showTrack(id, rec); });
+  $('btnPaid').addEventListener('click', ()=>{ const id = $('trackIn').value.trim(); const map=loadOrders(); if(!map[id]) return; map[id].status='PAID'; saveOrders(map); setStatusUI('PAID'); });
+
+  // secret delivered: 6 taps on logo
+  let tapCount=0, tapTimer=null;
+  $('secretLogo').addEventListener('click', ()=>{
+    tapCount++; clearTimeout(tapTimer);
+    tapTimer=setTimeout(()=>tapCount=0,900);
+    if(tapCount>=6){
+      tapCount=0;
       const map = loadOrders();
-      map[rid] = {status:'PENDING', server: serverEl.value.trim(), qty:q, rate:r, total, time:new Date().toISOString()};
-      saveOrders(map);
+      const ids = Object.keys(map).reverse();
+      const latest = ids.find(id=>map[id] && map[id].status === 'PENDING');
+      if(latest){ map[latest].status='DELIVERED'; saveOrders(map); }
+    }
+  });
 
-      // show popup + thank you animation
-      $('buyReceipt').textContent = `Receipt ID: ${rid}`;
-      $('buyMsg').innerHTML = `<strong>I-PASTE MO ITO SA MESSENGER KO.</strong><br><small style="opacity:.9">${msg.replace(/\n/g,'<br>')}</small>`;
-      const overlay = $('buyOverlay'); showOverlay(overlay);
+  /* GCash copy + overlay */
+  (function(){
+    const row=$('gcashRow'), pop=$('gcashOverlay'), ok=$('gcashOk');
+    row.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText('09162466318'); }catch(e){}; showOverlay(pop); });
+    ok.addEventListener('click', ()=> hideOverlay(pop));
+  })();
 
-      // show confetti + thank you text
-      const conf = $('confetti'), thanks = $('thankText');
-      conf.classList.add('show'); thanks.style.display='block';
-      setTimeout(()=>{ conf.classList.remove('show'); }, 2200);
-      // auto-hide popup after 5s (user can still click OK)
-      setTimeout(()=>{ hideOverlay(overlay); thanks.style.display='none'; }, 5200);
-    });
+  /* GCash QR */
+  (function(){ const btn=$('showQR'), pop=$('qrOverlay'), ok=$('qrOk'); btn.addEventListener('click', ()=> showOverlay(pop)); ok.addEventListener('click', ()=> hideOverlay(pop)); })();
 
-    $('closeBuy').addEventListener('click', ()=>{ hideOverlay($('buyOverlay')); $('thankText').style.display='none'; });
+  /* GoTyme copy + overlay */
+  (function(){ const row=$('goRow'), pop=$('goOverlay'), ok=$('goOk'); row.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText('014664932955'); }catch(e){}; showOverlay(pop); }); ok.addEventListener('click', ()=> hideOverlay(pop)); })();
 
-    /* GCash copy + popup */
-    (function(){
-      const row = $('gcashRow'), pop = $('gcashOverlay'), ok = $('gcashOk');
-      row.addEventListener('click', async ()=>{
-        try{ await navigator.clipboard.writeText('09162466318'); }catch(e){}
-        showOverlay(pop);
-      });
-      ok.addEventListener('click', ()=> hideOverlay(pop));
-    })();
+  /* GoTyme QR */
+  (function(){ const btn=$('showGoQR'), pop=$('goQROverlay'), ok=$('goQROk'); btn && btn.addEventListener('click', ()=> showOverlay(pop)); ok && ok.addEventListener('click', ()=> hideOverlay(pop)); })();
 
-    /* GCash QR */
-    (function(){
-      const btn = $('showQR'), pop = $('qrOverlay'), ok = $('qrOk');
-      btn.addEventListener('click', ()=> showOverlay(pop));
-      ok.addEventListener('click', ()=> hideOverlay(pop));
-    })();
+  // small error toast
+  window.addEventListener('error', function (e) {
+    try{
+      const t = document.createElement('div'); t.textContent = 'Error: ' + (e.message || 'unknown');
+      Object.assign(t.style, {position:'fixed', left:'8px', bottom:'8px', background:'rgba(255,0,80,.12)', color:'#fff', padding:'8px 10px', border:'1px solid rgba(255,0,80,.35)', borderRadius:'8px', zIndex:99999, fontSize:'12px', maxWidth:'90vw'});
+      document.body.appendChild(t); setTimeout(()=>t.remove(), 5000);
+    }catch(_){}
+  });
 
-    /* GoTyme copy + popup */
-    (function(){
-      const row = $('goRow'), pop = $('goOverlay'), ok = $('goOk');
-      row.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText('014664932955'); }catch(e){}; showOverlay(pop); });
-      ok.addEventListener('click', ()=> hideOverlay(pop));
-    })();
-
-    /* GoTyme QR */
-    (function(){
-      const btn = $('showGoQR'), pop = $('goQROverlay'), ok = $('goQROk');
-      btn.addEventListener('click', ()=> showOverlay(pop));
-      ok.addEventListener('click', ()=> hideOverlay(pop));
-    })();
-
-    // secret delivered: 6 taps on logo (kept)
-    let tapCount=0, tapTimer=null;
-    $('secretLogo').addEventListener('click', ()=>{
-      tapCount++; clearTimeout(tapTimer);
-      tapTimer=setTimeout(()=>tapCount=0,900);
-      if(tapCount>=6){
-        tapCount=0;
-        // mark latest pending order as DELIVERED (local only) if any
-        const map = loadOrders();
-        const ids = Object.keys(map).reverse();
-        const latest = ids.find(id=>map[id] && map[id].status === 'PENDING');
-        if(latest){ map[latest].status='DELIVERED'; saveOrders(map); }
-      }
-    });
-
-  }); // DOMContentLoaded
 })(); // IIFE
 </script>
 </body>
