@@ -65,60 +65,17 @@
   .pill.active{transform:translateY(-2px) scale(1.02);border-color:rgba(80,255,170,.55);box-shadow:0 0 20px rgba(40,255,170,.26), inset 0 0 0 1px rgba(40,255,170,.28)}
   .pill.lock{opacity:.55;filter:grayscale(.25);border-color:rgba(255,255,255,.10);box-shadow:none}
 
-  /* 🔥 Flaming effect for ₱0.70 when active */
-  .pill.flame {
-    border-color: rgba(255,120,0,.7) !important;
-    box-shadow:
-      0 0 24px rgba(255,120,0,.35),
-      0 0 42px rgba(255,60,0,.25),
-      inset 0 0 0 1px rgba(255,150,80,.35);
-    animation: flamePulse 1.2s ease-in-out infinite;
-  }
-  .pill.flame::before,
-  .pill.flame::after{
-    content:"";
-    position:absolute; left:50%; transform:translateX(-50%);
-    width:64%; height:46%;
-    bottom:-8px; border-radius:50% 50% 40% 40%;
-    filter: blur(8px) drop-shadow(0 0 12px rgba(255,120,0,.55));
-    pointer-events:none;
-  }
-  .pill.flame::before{
-    background: radial-gradient(60% 70% at 50% 80%,
-      rgba(255,180,60,.9) 0%,
-      rgba(255,110,30,.75) 35%,
-      rgba(255,60,0,.55) 60%,
-      rgba(255,60,0,0) 72%);
-    animation: flameFlicker 180ms infinite steps(2,end);
-  }
-  .pill.flame::after{
-    background: radial-gradient(55% 65% at 50% 78%,
-      rgba(255,240,200,.85) 0%,
-      rgba(255,170,80,.65) 35%,
-      rgba(255,90,0,.45) 60%,
-      rgba(255,90,0,0) 72%);
-    opacity:.9; mix-blend-mode: screen;
-    animation: flameRise 1.6s ease-in-out infinite;
-  }
+  /* Flaming effect for ₱0.70 */
+  .pill.flame { border-color: rgba(255,120,0,.7) !important; box-shadow:0 0 24px rgba(255,120,0,.35),0 0 42px rgba(255,60,0,.25), inset 0 0 0 1px rgba(255,150,80,.35); animation: flamePulse 1.2s ease-in-out infinite; }
+  .pill.flame::before, .pill.flame::after{ content:""; position:absolute; left:50%; transform:translateX(-50%); width:64%; height:46%; bottom:-8px; border-radius:50% 50% 40% 40%; filter: blur(8px) drop-shadow(0 0 12px rgba(255,120,0,.55)); pointer-events:none; }
+  .pill.flame::before{ background: radial-gradient(60% 70% at 50% 80%, rgba(255,180,60,.9) 0%, rgba(255,110,30,.75) 35%, rgba(255,60,0,.55) 60%, rgba(255,60,0,0) 72%); animation: flameFlicker 180ms infinite steps(2,end); }
+  .pill.flame::after{ background: radial-gradient(55% 65% at 50% 78%, rgba(255,240,200,.85) 0%, rgba(255,170,80,.65) 35%, rgba(255,90,0,.45) 60%, rgba(255,90,0,0) 72%); opacity:.9; mix-blend-mode: screen; animation: flameRise 1.6s ease-in-out infinite; }
   @keyframes flamePulse { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-1px); } }
   @keyframes flameFlicker { 50% { filter: blur(10px) drop-shadow(0 0 16px rgba(255,140,0,.65)); } }
-  @keyframes flameRise {
-    0%{ transform: translateX(-50%) translateY(0) scale(1); opacity:.85; }
-    50%{ transform: translateX(-50%) translateY(-2px) scale(1.04); opacity:.95; }
-    100%{ transform: translateX(-50%) translateY(0) scale(1); opacity:.85; }
-  }
+  @keyframes flameRise { 0%{ transform: translateX(-50%) translateY(0) scale(1); opacity:.85; } 50%{ transform: translateX(-50%) translateY(-2px) scale(1.04); opacity:.95; } 100%{ transform: translateX(-50%) translateY(0) scale(1); opacity:.85; } }
 
-  /* 🔖 BEST DEAL chip (shows only when 0.70 active) */
-  .dealChip{
-    position:absolute; top:-10px; right:-10px;
-    background:linear-gradient(180deg,#ffb66a,#ff7b2c);
-    color:#2b1200; font-weight:900; font-size:11px;
-    padding:6px 8px; border-radius:999px; box-shadow:0 8px 22px rgba(255,120,0,.35);
-    border:1px solid rgba(255,255,255,.35);
-    display:flex; align-items:center; gap:6px;
-    transform:scale(.9); opacity:0; pointer-events:none;
-    transition:opacity .18s ease, transform .18s ease;
-  }
+  /* BEST DEAL chip */
+  .dealChip{ position:absolute; top:-10px; right:-10px; background:linear-gradient(180deg,#ffb66a,#ff7b2c); color:#2b1200; font-weight:900; font-size:11px; padding:6px 8px; border-radius:999px; box-shadow:0 8px 22px rgba(255,120,0,.35); border:1px solid rgba(255,255,255,.35); display:flex; align-items:center; gap:6px; transform:scale(.9); opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease; }
   .pill.best .dealChip{ opacity:1; transform:scale(1); }
 
   /* Card / Inputs */
@@ -166,10 +123,6 @@
   .notice{margin-top:12px;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,#17141a,#120f14);border:1px solid rgba(255,255,255,.12);box-shadow:0 0 16px rgba(0,0,0,.25)}
   .notice h4{margin:0 0 6px;font-size:14px}
   .notice p{margin:0;color:#ccb9c1;font-size:13px}
-
-  /* Track Order */
-  .track{margin-top:14px;background:linear-gradient(180deg,#151218,#100f13);border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:14px;box-shadow:0 0 16px rgba(0,0,0,.25)}
-  .chip{display:inline-flex;gap:8px;align-items:center;background:var(--chip);border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:12px}
 
   /* Popups */
   #buyPopup, #gcashPopup, #qrPopup, #goPopup, #goQRPopup{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;place-items:center;z-index:50}
@@ -238,7 +191,7 @@
 
       <div class="label" style="margin-top:10px">Server (Required)</div>
 
-      <!-- Replaced free text with searchable suggestions (exact server names provided) -->
+      <!-- Searchable suggestions -->
       <div class="suggestions">
         <input id="serverIn" class="in" placeholder="Type or search server (e.g., ASIA-022 / HOF1)" autocomplete="off">
         <div id="suggestList" class="suggestions-list" style="display:none"></div>
@@ -283,9 +236,7 @@
       <!-- GoTyme (copy only) with QR button) -->
       <div id="goRow" class="gcashRow" title="Tap to copy account" style="background:rgba(0,214,231,.08);border-color:rgba(0,214,231,.35)">
         <div class="gcashLeft">
-          <!-- Real GoTyme-like teal icon -->
-          <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"
-               style="border-radius:999px; box-shadow:0 0 10px rgba(0,214,231,.35)">
+          <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" style="border-radius:999px; box-shadow:0 0 10px rgba(0,214,231,.35)">
             <defs>
               <linearGradient id="goTeal" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stop-color="#00D6E7"/>
@@ -293,8 +244,7 @@
               </linearGradient>
             </defs>
             <rect x="0" y="0" width="32" height="32" rx="16" fill="url(#goTeal)"/>
-            <path d="M10.5 16a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0zm2.6 0a2.9 2.9 0 1 0 5.8 0 2.9 2.9 0 0 0-5.8 0z"
-                  fill="#00353A" opacity=".95"/>
+            <path d="M10.5 16a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0zm2.6 0a2.9 2.9 0 1 0 5.8 0 2.9 2.9 0 0 0-5.8 0z" fill="#00353A" opacity=".95"/>
           </svg>
           GoTyme • <strong id="goNumber">014664932955 — MOISES BITONIO</strong>
         </div>
@@ -328,35 +278,6 @@
       <p>Processing time may vary depending on server demand. Some servers might experience longer wait times — pero <strong>guaranteed matatanggap ang order mo</strong>.</p>
     </div>
 
-    <!-- Track Order -->
-    <div class="track">
-      <div class="label" style="margin-bottom:6px">Track Order</div>
-      <div style="display:grid;grid-template-columns:1fr auto;gap:10px">
-        <input id="trackIn" class="in" placeholder="Enter Receipt ID (e.g., YMIR-XXXX)" autocomplete="off">
-        <button id="trackBtn" class="btn" style="background:#27252c;color:#fff">Check</button>
-      </div>
-      <div id="trackOut" style="margin-top:10px;display:none">
-        <div class="chip" style="margin-bottom:8px">
-          <strong id="t_id">—</strong>
-          <span id="t_status" style="opacity:.9"></span>
-        </div>
-        <div style="display:grid;gap:6px;font-size:14px;color:#ccb9c1">
-          <div>Server: <span id="t_server" style="color:#fff"></span></div>
-          <div>Diamonds: <span id="t_qty" style="color:#fff"></span> 💎</div>
-          <div>Rate: <span id="t_rate" style="color:#fff"></span></div>
-          <div>Total: <span id="t_total" style="color:#fff"></span></div>
-          <div>Created: <span id="t_time" style="color:#fff"></span></div>
-        </div>
-        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
-          <button id="btnPaid" class="btn" style="background:#204c2f;color:#e7fff1">Buyer: I Paid</button>
-          <!-- Delivered is secret: 6 taps on the logo -->
-        </div>
-        <div class="hint" style="margin-top:6px">
-          Tip: Buyer taps <b>I Paid</b> after sending payment. (Local tracking only)
-        </div>
-      </div>
-      <div id="trackNone" class="hint" style="display:none;margin-top:8px">Walang record sa device na ’to. Note: Tracking works on the same phone/browser (local only).</div>
-    </div>
   </div>
 
   <!-- BUY Popup -->
@@ -425,8 +346,8 @@
       });
       document.body.appendChild(t);
       setTimeout(()=>t.remove(), 5000);
-    }catch(_){}}
-  );
+    }catch(_){}
+  });
 
   document.addEventListener('DOMContentLoaded', () => {
     /* Helpers */
@@ -444,11 +365,6 @@
     const servers = [
 "破军","8888","DaddyKim","DaddyVerse","DaddyWorld","HOF1","HOF2","HOF3","HOF4","HOF5","HOF6","HERO","KINGS","Kings2","Kings3","Kings4","xaou","Chess","ISEKAI","ManiTW","PROSGARD","X","MEGA","Sky","Tokyo","Bangkok","Taipei","Asia014","Asia015","Asia016","Asia017","Asia018","Asia019","Asia020","Asia021","Asia022","Asia023","Asia024","Asia025","Asia026","Asia027","Asia028","Asia029","Asia030","Asia031","Asia032","Asia033","Asia034","Asia035","Asia036","Asia037","Asia038","Asia039","Asia040","Asia041","Asia042","Asia043"
     ];
-
-    /* Local store for track order */
-    const STORE_KEY='ymir_orders';
-    const loadOrders = () => { try{ return JSON.parse(localStorage.getItem(STORE_KEY)||'{}'); }catch{return{}} };
-    const saveOrders = m => { try{ localStorage.setItem(STORE_KEY, JSON.stringify(m)); }catch{} };
 
     function getRate(q){
       if(!q || q<MIN1) return null;
@@ -545,20 +461,7 @@
       if(!e.target.closest('.suggestions')){ suggestList.style.display='none'; }
     });
 
-    /* Receipt helpers */
-    function genRID(){
-      const t = Date.now().toString(36).toUpperCase();
-      const r = Math.random().toString(36).slice(2,6).toUpperCase();
-      return `YMIR-${t}-${r}`;
-    }
-
-    function setStatusUI(status){
-      const s=$('t_status');
-      s.textContent = status;
-      s.style.color = status==='DELIVERED' ? '#ff8aa0' : status==='PAID' ? '#22cf74' : '#ffd64d';
-    }
-
-    /* Buy -> copy message, popup, store local order */
+    /* Buy -> copy message and popup (no tracking) */
     $('buyBtn').addEventListener('click', async ()=>{
       let q = toInt(diasEl.value);
       let p = toNum(phpEl.value);
@@ -566,78 +469,16 @@
       const r = getRate(q);
       if(!r || !validServer()){ recalc(); return; }
       const total = p || (q*r);
-      const rid = genRID();
+      const rid = `YMIR-${Date.now().toString(36).toUpperCase().slice(-6)}`;
 
       const msg = `BUY ORDER\nDiamonds: ${q} 💎\nServer: ${serverEl.value.trim()}\nRate: ₱${r.toFixed(2)} / dia\nTotal: ₱${fmt(total)}\nGCash: 09162466318 (MOISES B.)\nReceipt ID: ${rid}`;
 
       try{ await navigator.clipboard.writeText(msg); }catch{}
       $('buyOrderId').textContent = `Receipt ID: ${rid}`;
       $('buyPopup').style.display='grid';
-
-      const map=loadOrders();
-      map[rid] = {status:'PENDING', server: serverEl.value.trim(), qty:q, rate:r, total, time:new Date().toISOString()};
-      saveOrders(map);
-
-      // Prefill track area
-      $('trackIn').value = rid;
-      showTrack(rid, map[rid]);
     });
 
     $('closePop').addEventListener('click', ()=> $('buyPopup').style.display='none');
-
-    /* Track UI */
-    function showTrack(id, rec){
-      if(rec){
-        $('trackOut').style.display='block';
-        $('trackNone').style.display='none';
-        $('t_id').textContent = id;
-        setStatusUI(rec.status);
-        $('t_server').textContent = rec.server || '—';
-        $('t_qty').textContent = rec.qty || '—';
-        $('t_rate').textContent = rec.rate ? `₱${rec.rate.toFixed(2)} / dia` : '—';
-        $('t_total').textContent = rec.total ? `₱${fmt(rec.total)}` : '—';
-        $('t_time').textContent = rec.time ? new Date(rec.time).toLocaleString() : '—';
-      }else{
-        $('trackOut').style.display='none';
-        $('trackNone').style.display='block';
-      }
-    }
-
-    // query ?rid=...
-    (function(){
-      const params = new URLSearchParams(location.search);
-      const rid = params.get('rid');
-      if(rid){
-        $('trackIn').value = rid;
-        const rec = loadOrders()[rid];
-        showTrack(rid, rec);
-      }
-    })();
-
-    $('trackBtn').addEventListener('click', ()=>{
-      const id = $('trackIn').value.trim();
-      const rec = loadOrders()[id];
-      showTrack(id, rec);
-    });
-
-    $('btnPaid').addEventListener('click', ()=>{
-      const id = $('trackIn').value.trim();
-      const map=loadOrders(); if(!map[id]) return;
-      map[id].status='PAID'; saveOrders(map); setStatusUI('PAID');
-    });
-
-    // secret delivered: 6 taps on logo
-    let tapCount=0, tapTimer=null;
-    $('secretLogo').addEventListener('click', ()=>{
-      tapCount++; clearTimeout(tapTimer);
-      tapTimer=setTimeout(()=>tapCount=0,900);
-      if(tapCount>=6){
-        tapCount=0;
-        const id = $('trackIn').value.trim();
-        const map=loadOrders(); if(!map[id]) return;
-        map[id].status='DELIVERED'; saveOrders(map); setStatusUI('DELIVERED');
-      }
-    });
 
     /* GCash copy + popup */
     (function(){
